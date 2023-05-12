@@ -4,7 +4,6 @@ import Loginpage from './components/Loginpage';
 import Registration from './components/Registration';
 import Home from './components/Home';
 import QrScannerPage from './components/QrScannerPage';
-
 import "./css/main.css";
 import Background from './components/background/Background';
 

@@ -9,6 +9,29 @@ body,
   font-family: "Roboto Mono", monospace;
 }
 
-body {
-  position: relative;
+@media only screen and (min-width: 768px) {
+  body {
+    display: block;
+    position: relative;
+  }
+
+  #mediasupport {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #root,
+  .app {
+    display: none;
+  }
+
+  #mediasupport {
+    display: block;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 2rem;
+    background-color: #f2f2f2;
+    color: #333;
+  }
 }
