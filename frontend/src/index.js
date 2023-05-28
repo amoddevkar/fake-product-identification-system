@@ -9,7 +9,7 @@ import Fade from './Fade'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <SnackbarProvider maxSnack={3} autoHideDuration={6000} TransitionComponent={Fade} anchorOrigin={{
+  <SnackbarProvider maxSnack={3} autoHideDuration={3000} TransitionComponent={Fade} anchorOrigin={{
     vertical: 'top',
     horizontal: 'center',
   }}>

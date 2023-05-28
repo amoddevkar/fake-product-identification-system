@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import { ethers } from "ethers";
 import FPIS from "../contracts/FPIS_contract.json";
 import FPIS_address from "../contracts/contract-address.json";
-
+import { enqueueSnackbar } from "notistack";
 export const UserContext = createContext();
 
 export function UserContextProvider({ children }) {
@@ -16,6 +16,7 @@ export function UserContextProvider({ children }) {
   const connectWalletReg = async () => {
     try {
       const { ethereum } = window;
+      if (!ethereum) throw "Please Install Metamask!!!";
       await ethereum.request({
         method: "eth_requestAccounts",
       });
@@ -31,12 +32,17 @@ export function UserContextProvider({ children }) {
       setState({ provider, signer, fpis });
     } catch (error) {
       console.log(error);
+      if (error == "Please Install Metamask!!!") {
+        enqueueSnackbar(error);
+      }
+      throw new Error(error);
     }
   };
 
   const connectWallet = async () => {
     try {
       const { ethereum } = window;
+      if (!ethereum) throw "Please Install Metamask!!!";
       await ethereum.request({
         method: "eth_requestAccounts",
       });
@@ -53,6 +59,9 @@ export function UserContextProvider({ children }) {
       setUser(user);
     } catch (error) {
       console.log(error);
+      if (error == "Please Install Metamask!!!") {
+        enqueueSnackbar(error);
+      }
       throw new Error(error);
     }
   };

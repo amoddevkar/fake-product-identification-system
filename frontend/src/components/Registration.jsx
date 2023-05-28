@@ -23,7 +23,11 @@ const Registration = () => {
 
   useEffect(() => {
     const connect = async () => {
-      await connectWalletReg();
+      try {
+        await connectWalletReg();
+      } catch (error) {
+        navigate("/");
+      }
     };
     connect();
   }, []);
@@ -54,10 +58,13 @@ const Registration = () => {
         });
       })
       .catch((error) => {
-        enqueueSnackbar("Something went wrong !!");
         showLoading(false);
         navigate("/");
-        console.log(error);
+        if (error.error.message != "execution reverted: User already exists") {
+          enqueueSnackbar("Something went wrong !!");
+        } else {
+          enqueueSnackbar("User already exists !!");
+        }
       });
   };
 

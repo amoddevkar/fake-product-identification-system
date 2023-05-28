@@ -20,7 +20,8 @@ const Loginpage = () => {
       })
       .catch((error) => {
         showLoading(false);
-        enqueueSnackbar("User not registered");
+        if (error.message != "Please Install Metamask!!!")
+          enqueueSnackbar("User not registered");
       });
   };
 

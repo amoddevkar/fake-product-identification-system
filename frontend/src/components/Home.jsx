@@ -10,7 +10,7 @@ const Home = () => {
     const getUserData = async () => {
       try {
         if (!user[0]) throw "Try Connecting wallet";
-        enqueueSnackbar(`Welcome ${user[0]} !!`);
+        enqueueSnackbar(`Welcome ${user[0]} with role ${user[2]} !!`);
       } catch (error) {
         console.log(error);
         enqueueSnackbar("Try Connecting wallet");
